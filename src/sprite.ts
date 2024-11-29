@@ -35,6 +35,8 @@ export class Sprite {
 
     // Add the element to the document body (or you can add it elsewhere as needed)
     document.body.appendChild(element);
+
+    return new Sprite(element, imgElement);
   }
 
   // Returns the size of the sprite
