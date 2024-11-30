@@ -16,3 +16,18 @@ body {
     transform-origin: center;
     transform: translate(-50%, -50%);
 }
+
+.exit {
+    color: green;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    font-size: 48px;
+}
+
+.instruction {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    font-size: 24px;
+}

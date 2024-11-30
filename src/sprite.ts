@@ -61,6 +61,13 @@ export class Sprite {
     this.updateStyle();
   }
 
+  public setSize(size: Vec2) : void {
+    this.element.style.width = `${size.x}`;
+    this.element.style.height = `${size.y}`;
+    this.imgElement.width = size.x;
+    this.imgElement.height = size.y;
+  }
+
   // Updates the style of the div to reflect position and rotation
   private updateStyle(): void {
     this.element.style.transform = `

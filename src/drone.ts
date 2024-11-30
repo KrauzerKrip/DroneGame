@@ -30,7 +30,7 @@ export class Drone extends GameObject {
 
   constructor(pos: Vec2, rot: number) {
     const sprite = Sprite.fromImage("resources/sprites/drone.png");
-    super(sprite, { position: pos, rotation: rot, size: sprite.getSize() });
+    super(sprite, { position: pos, rotation: rot, size: new Vec2(140, 48) });
     
     // Add event listeners
     window.addEventListener("keydown", this.onKeyDown.bind(this));
@@ -47,7 +47,7 @@ export class Drone extends GameObject {
     if (e.key === "d" || e.key === "D") this.rightEngineActive = false;
   }
 
-  public onCollision(objectCollidedWith: GameObject) {
+  public onCollision(objectCollidedWith: GameObject): void {
     alert('You have collided with an obstacle! Please, restart the training program.')
   }
 
@@ -71,7 +71,7 @@ export class Drone extends GameObject {
 
     netTorque *= 0.05;
 
-    netForce = new Vec2(netForce.x * 200, netForce.y * 10);
+    netForce = new Vec2(netForce.x * 300, netForce.y * 10);
 
     // Apply physics
     this.applyForce(netForce, deltaTime);
