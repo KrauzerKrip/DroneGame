@@ -1,4 +1,5 @@
 import { Transform } from "./components";
+import { BoxColliderAABB } from "./physics";
 import { Sprite } from "./sprite";
 import { Vec2 } from "./vector";
 
@@ -24,10 +25,14 @@ export class GameObject {
   public transform: Transform;
   private readonly sprite: Sprite;
 
-  constructor(sprite: Sprite, transform = { position: new Vec2(0, 0), rotation: 0, scale: new Vec2(0, 0) }, name: string = randomUUID(), ) {
+  constructor(sprite: Sprite, transform = { position: new Vec2(0, 0), rotation: 0, size: sprite.getSize() }, name: string = randomUUID()) {
     this.name = name;
     this.transform = transform;
     this.sprite = sprite;
+  }
+
+  public onCollision(objectCollidedWith: GameObject) {
+    
   }
 
   public update(deltaTime: number) {
@@ -35,6 +40,8 @@ export class GameObject {
   }
 
   public render(): void {
-    
+    const screenY = window.innerHeight - (this.transform.position.y + this.sprite.getSize().y * 0.5);
+    this.sprite.setPosition(new Vec2(this.transform.position.x, screenY));
+    this.sprite.setRotation(this.transform.rotation);
   }
 }
